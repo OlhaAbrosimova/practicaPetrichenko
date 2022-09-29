@@ -263,8 +263,8 @@
 // // 	console.log(i)
 // // }}
 
-// //4. Перепишите цикл  for на вариант с while. 
-//Результат должен остаться точно таким же. 
+// //4. Перепишите цикл  for на вариант с while.
+//Результат должен остаться точно таким же.
 //Не создайте бесконечный цикл! Иначе браузер может зависнуть.
 
 // //  Цикл, который нужно переписать:
@@ -622,7 +622,7 @@
 
 // //1) Создайте функцию, которая будет на вход принимать 1 аргумент с именем человека и возвращать строку.
 
-// //Пример: вызов функции sayHello('Антон') возвращает строку "Привет, Антон!". 
+// //Пример: вызов функции sayHello('Антон') возвращает строку "Привет, Антон!".
 //В решении вызывать функцию не нужно, программа сделает это за вас.
 
 // //P.S. возвращать - это использовать ключевое слово return.
@@ -804,18 +804,45 @@
 // 	console.log(`${i}: ${item} внутри массива`);
 // });
 
-const str = prompt("товары?", "");
-const products = str.split(", ");
-products.sort();
+// const str = prompt("товары?", "");
+// const products = str.split(", ");
+// products.sort();
 
-console.log(products.join("; "));
+// console.log(products.join("; "));
 
-const arr = ['xfgfg', 'aaa', 'qqq', 'ccc'];
-arr.sort();
+// const arr = ['xfgfg', 'aaa', 'qqq', 'ccc'];
+// arr.sort();
 
-console.log(arr);
-console.log(arr.reverse());
+// console.log(arr);
+// console.log(arr.reverse());
 
-function compareNum(a, b) {
-	return a-b;
-}
+// function compareNum(a, b) {
+// 	return a-b;
+// }
+
+const soldier = {
+	health: 400,
+	armor: 100,
+	sayHello: function () {
+		return "Hello";
+	},
+};
+
+// const jonh = { health: 100 };
+
+//1-й устаревший вариант
+//jonh.__proto__ = soldier;
+
+//установить прототип джону от солдата
+// Object.setPrototypeOf(jonh, soldier);
+// console.log(jonh.sayHello());
+
+// обычно на практике
+
+const jonh = Object.create(soldier);
+// console.log(jonh);
+// console.log(soldier);
+jonh.armor = 200;
+console.log(jonh.armor);
+
+console.log(jonh.sayHello());
