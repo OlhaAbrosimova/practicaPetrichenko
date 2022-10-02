@@ -820,29 +820,202 @@
 // 	return a-b;
 // }
 
-const soldier = {
-	health: 400,
-	armor: 100,
-	sayHello: function () {
-		return "Hello";
-	},
-};
+// const soldier = {
+// 	health: 400,
+// 	armor: 100,
+// 	sayHello: function () {
+// 		return "Hello";
+// 	},
+// };
 
-// const jonh = { health: 100 };
+// // const jonh = { health: 100 };
 
-//1-й устаревший вариант
-//jonh.__proto__ = soldier;
+// //1-й устаревший вариант
+// //jonh.__proto__ = soldier;
 
-//установить прототип джону от солдата
-// Object.setPrototypeOf(jonh, soldier);
+// //установить прототип джону от солдата
+// // Object.setPrototypeOf(jonh, soldier);
+// // console.log(jonh.sayHello());
+
+// // обычно на практике
+
+// const jonh = Object.create(soldier);
+// // console.log(jonh);
+// // console.log(soldier);
+// jonh.armor = 200;
+// console.log(jonh.armor);
+
 // console.log(jonh.sayHello());
 
-// обычно на практике
+// //Динамическая типизация
 
-const jonh = Object.create(soldier);
-// console.log(jonh);
-// console.log(soldier);
-jonh.armor = 200;
-console.log(jonh.armor);
+// //1. toString
 
-console.log(jonh.sayHello());
+// console.log(typeof String(null));
+// console.log(String(null));
+
+// //конкатинация = когда мы что-то складываем со строкой.
+
+// console.log(typeof (5 + ""));
+// let cc = 5;
+// let vv;
+// console.log((vv = cc + ""));
+// let ss = "3";
+// console.log(vv+ss);
+
+// const num = 5;
+// console.log("https://vk.com/catalog/" + num);
+
+// const fontSize = 26 + 'px';
+// console.log(fontSize);
+
+// //To Number
+
+// //1 редко пользуются
+// console.log(typeof(Number('4')));
+
+// //2. унарный плюс, это знак +, который ставят перед каким-то типом данных.
+// console.log(typeof(+'5'));
+
+// //3. метод parseInt (не самое очевидное использование, пользуются нечасто)/
+// //второе число в аргументах - это десятичная система.
+
+// console.log(typeof(parseInt("15px", 10)))
+
+// let answ = +prompt("hello", "");
+
+// //TO boolean (ТРЕТИЙ ТИП ДИНАМИЧЕСКОЙ ТИПИЗАЦИИ)
+
+// //1-й спосіб. нативный.
+
+// let switcher = null;
+
+// if (switcher) {
+// 	console.log('Working...');
+// }
+
+// switcher = 1;
+
+// if (switcher) {
+// 	console.log("Working...");
+// }
+
+// //2-й (редко используется
+
+// console.log(typeof(Boolean('4')));
+
+// //3-й
+// console.log(typeof(!!"4444"));
+
+// let a = "-1";
+
+// if (a) {console.log('ok')}
+
+////
+
+// let number = 5;
+
+// function logNumber() {
+// 	console.log(number);
+// }
+
+// number = 6;
+
+// logNumber();
+
+////
+"use strict";
+
+// let number = 5;
+// debugger;
+
+// function logNumber() {
+// 	debugger;
+// 	console.log(number);
+// }
+
+// number = 6;
+
+// logNumber();
+// debugger;
+
+// function createCounter() {
+// 	let counter = 0;
+
+// 	const myFunction = function () {
+// 		debugger;
+// 		counter += 1;
+// 		debugger;
+// 		return counter;
+// 		debugger;
+// 	};
+// 	return myFunction;
+// }
+// debugger;
+// const increment = createCounter();
+// debugger;
+// const c1 = increment();
+// debugger;
+// const c2 = increment();
+// debugger;
+// const c3 = increment();
+// debugger;
+
+// console.log(c1, c2, c3);
+
+//
+
+// {
+// 	let msg = "Hello";
+// }
+// console.log(msg);
+
+// for (let i = 0; i < 9; i++) {
+// 	for (let j = 0; j < 9; j++) {
+// 		let num = 3;
+// 	}
+// 	console.log(num);
+// }
+
+// console.log(0 || 1);
+// console.log("a" > "b");
+
+// let sayHi = function func(who) {
+// 	if (who) {
+// 		alert(`Hello, ${who}`);
+// 	} else {
+// 		func("Guest");
+// 	}
+// };
+
+// sayHi();
+
+// func();
+
+// let sayHi = function (who) {
+// 	if (who) {
+// 		alert(`Hello, ${who}`);
+// 	} else {
+// 		sayHi("Guest"); // Ошибка: sayHi не является функцией
+// 	}
+// };
+
+// let welcome = sayHi;
+// sayHi = null;
+
+// welcome();
+
+let sayHi = function func(who) {
+	if (who) {
+		alert(`Hello, ${who}`);
+	} else {
+		func("Guest"); // Теперь всё в порядке
+	}
+};
+
+let welcome = sayHi;
+sayHi = null;
+
+welcome(); // Hello, Guest (вложенный вызов работает)
+
+

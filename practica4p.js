@@ -211,11 +211,13 @@ const students = [
 	"Takesi",
 	"Sam",
 ];
+
 function sortStudentsByGroups(arr) {
 	arr.sort();
 	let arrGroup = [];
 	for (let i = 0; i < 3; i++) arrGroup.push(arr.splice(0, 3));
 	arrGroup.push(`Оставшиеся студенты: ${!arr.length ? `-` : arr.join(", ")}`);
+
 	return arrGroup;
 }
 
